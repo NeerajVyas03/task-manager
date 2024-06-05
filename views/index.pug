@@ -31,6 +31,7 @@ block content
                         if !task.completed
                             form.complete-task(id=task._id, style='display:inline')
                                 button(type='submit') Mark Completed
-                        a.edit-button(href=`/${task._id}`) Edit
+                        if !task.completed
+                            a.edit-button(href=`/${task._id}`) Edit
                         form.delete-task( style='display:inline' id=task._id)
                            button.delete-button(id=task._id type='submit') Delete
