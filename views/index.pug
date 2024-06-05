@@ -1,0 +1,36 @@
+extends layout
+
+block content
+    h1 Task Manager
+    form.add-task
+        input#name(type='text', name='title', placeholder='Title', required=true)
+        input#desc(type='text', name='description', placeholder='Description')
+        input#dueDate(type='date', name='dueDate')
+        input#category(type='text', name='category', placeholder='Category')
+        button.add-button(type='submit') Add Task
+    table
+        thead
+            tr
+                th Title
+                th Description
+                th Due Date
+                th Category
+                th.actions-header Actions
+        tbody
+            each task in tasks
+                tr
+                    td
+                        if task.completed
+                            s #{task.title}
+                        else
+                            = task.title
+                    td= task.description
+                    td= task.dueDate ? task.dueDate.toDateString() : ''
+                    td= task.category
+                    td.actions
+                        if !task.completed
+                            form.complete-task(id=task._id, style='display:inline')
+                                button(type='submit') Mark Completed
+                        a.edit-button(href=`/${task._id}`) Edit
+                        form.delete-task( style='display:inline' id=task._id)
+                           button.delete-button(id=task._id type='submit') Delete

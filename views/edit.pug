@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    h1 Edit Task
+    form.edit-task
+        .form-group
+            label(for='title') Title
+            input#name(type='text', name='title', value=task.title, required=true)
+        .form-group
+            label(for='description') Description
+            input#desc(type='text', name='description', value=task.description)
+        .form-group.inline-group
+            .inline-item
+                label(for='dueDate') Due Date
+                input#dueDate(type='date', name='dueDate', value=task.dueDate ? task.dueDate.toISOString().split('T')[0] : '')
+            .inline-item
+                label(for='category') Category
+                input#category(type='text', name='category', value=task.category)
+        .button-group
+            input#id(type='hidden', name='taskId', value=task._id)
+            button(type='submit') Update Task
+            a(href='/') Back to Home
