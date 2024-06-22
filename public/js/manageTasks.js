@@ -5,7 +5,7 @@ export const addTask = async (data) => {
     console.log(data);
     const res = await axios({
       method: "POST",
-      url: `http://127.0.0.1:3000/api/tasks`,
+      url: `/api/tasks`,
       data: data,
     });
     if (res.data.status === "success") {
@@ -23,7 +23,7 @@ export const editTask = async (data) => {
   try {
     const res = await axios({
       method: "PATCH",
-      url: `http://127.0.0.1:3000/api/tasks`,
+      url: `/api/tasks`,
       data: data,
     });
     if (res.data.status === "success") {
@@ -41,7 +41,7 @@ export const deleteTask = async (id) => {
   try {
     const res = await axios({
       method: "DELETE",
-      url: `http://127.0.0.1:3000/api/tasks/${id}`,
+      url: `/api/tasks/${id}`,
       data: id,
     });
     if (res.data.status === "success") {
@@ -59,7 +59,7 @@ export const completeTask = async (id) => {
   try {
     const res = await axios({
       method: "PATCH",
-      url: `http://127.0.0.1:3000/api/tasks/${id}`,
+      url: `/api/tasks/${id}`,
       data: id,
     });
     if (res.data.status === "success") {
